@@ -1,0 +1,16 @@
+{
+  "uploadOnSave": false,
+  "useAtomicWrites": false,
+  "deleteLocal": false,
+  "hostname": "ec2-54-93-98-141.eu-central-1.compute.amazonaws.com",
+  "port": "22",
+  "target": "/home/ubuntu/SatlabWWW",
+  "ignore": [
+    ".remote-sync.json",
+    ".git/**"
+  ],
+  "username": "ubuntu",
+  "keyfile": "C:\\Users\\bartek\\dostepzdalny2.ppk",
+  "watch": [],
+  "transport": "scp"
+}

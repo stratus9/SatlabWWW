@@ -1,0 +1,47 @@
+<html>
+	<head>
+		
+		<link rel="stylesheet" type="text/css" href="styles.css">
+		<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+	</head>
+
+	<body>
+		<form>
+   		<div id="editor">
+			import random
+			guesses_made = 0
+			name = raw_input('Hello! What is your name?')
+			number = random.randint(1, 20)
+			print 'Well, {0}, I am thinking of a number between 1 and 20.'.format(name)
+			while guesses_made < 6:
+
+				guess = int(raw_input('Take a guess: '))
+				guesses_made += 1
+				if guess < number:
+					print 'Your guess is too low.'
+				if guess > number:
+					print 'Your guess is too high.'
+				if guess == number:
+					break
+			if guess == number:
+				print 'Good job, {0}! You guessed my number in {1} guesses!'.format(name, guesses_made)
+			else:
+				print 'Nope. The number I was thinking of was {0}'.format(number)
+					
+		</div>
+    		<textarea name="editor" style="display: none;"></textarea>
+		</form>
+
+
+		<script type="text/javascript" src="lib/ace/ace.js"></script>
+		<script type="text/javascript">
+			var editor = ace.edit('editor');
+			editor.setTheme("ace/theme/monokai");
+			editor.getSession().setMode("ace/mode/python");
+			var textarea = $('textarea[name="editor"]');
+			editor.getSession().on("change", function () {
+					textarea.val(editor.getSession().getValue());
+			});	
+		</script>
+	</body>
+</html>

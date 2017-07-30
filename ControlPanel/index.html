@@ -1,0 +1,30 @@
+<html>
+
+<head>
+	<link rel="stylesheet" type="text/css" href="http://54.93.98.141/satlab/ControlPanel/styles.css">
+	<script src="/socket.io/socket.io.js"></script>
+	<script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+	<script>
+		var newSensorData;
+		var socket = io.connect('http://54.93.98.141:4200');
+		socket.on('update-msg', function(msg) {
+			newSensorData = msg;
+			//console.log(newSensorData);
+		});
+	</script>
+</head>
+
+<body>
+	<div id="mainContainer">
+		<div id="topContainer"><iframe src="components/TelemetryBar" width="100%" height="100%"></iframe></div>
+		<div id="bottomContainer">
+			<div id="NW"><iframe src="components/daynight" width="100%" height="100%"></iframe></div>
+			<div id="NE"><iframe src="components/InputPython" width="100%" height="100%"></iframe></div>
+			<div id="SW"><iframe src="components/3D_viewer" width="100%" height="100%"></iframe></div>
+			<div id="SE"><iframe src="components/ACEeditor" width="100%" height="100%"></iframe></div>
+		</div>
+	</div>
+
+</body>
+
+</html>

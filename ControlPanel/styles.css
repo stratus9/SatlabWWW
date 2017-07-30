@@ -1,0 +1,72 @@
+html,
+body,
+object {
+    height: 100%;
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+ overflow-y: hidden; 
+overflow-x: hidden;
+min-width:800px;
+min-height:600px;
+}
+#bottomContainer {
+    margin: 0px;
+    position: absolute;
+    top: 120px;
+    left: 0px;
+    height: calc(100% - 120px);
+    width: 100%;
+min-height:600px;
+}
+#topContainer {
+    margin: 0px;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    height: 120px;
+    width: 100%;
+ min-width:800px;
+}
+#NW{
+ position: absolute;
+    top: 0px;
+    left: 0px;
+    height: 50%;
+    width: 50%;
+
+}
+#NE{
+ position: absolute;
+    top: 0px;
+    left: 50%;
+    height: 50%;
+    width: 50%;
+
+}
+#SW{
+ position: absolute;
+    top: 50%;
+    left: 0%;
+    height: 50%;
+    width: 50%;
+
+}
+#SE{
+ position: absolute;
+    top: 50%;
+    left: 50%;
+    height: 50%;
+    width: 50%;
+
+}
+div {
+    margin: 0px;
+    padding: 0px;
+    position: fixed;
+}
+#mainContainer {
+    position: relative;
+    height: 100%;
+    width: 100%;
+}
