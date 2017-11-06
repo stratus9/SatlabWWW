@@ -6,7 +6,7 @@
 	<script src="https://code.jquery.com/jquery-1.11.1.js"></script>
 	<script>
 		var newSensorData;
-		var socket = io.connect('http://54.93.98.141:4200');
+		var socket = io.connect('http://localhost:4200');
 		socket.on('update-msg', function(msg) {
 			newSensorData = msg;
 			//console.log(newSensorData);
