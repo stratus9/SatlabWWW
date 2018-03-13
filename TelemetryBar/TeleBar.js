@@ -13,6 +13,10 @@ var DOM_MagZ;
 var DOM_GyroX;
 var DOM_GyroY;
 var DOM_GyroZ;
+var DOM_AccelX;
+var DOM_AccelY;
+var DOM_AccelZ;
+
 
 var DOM_LabelMag;
 var DOM_LabelBattLevel;
@@ -20,6 +24,7 @@ var DOM_LabelStatus;
 var DOM_LabelCoilsCurrent;
 var DOM_LabelBatVoltage;
 var DOM_LabelGyro;
+var DOM_LabelAccel;
 
 var outputRasterX;
 var outputRasterY;
@@ -48,6 +53,10 @@ function setup() {
   DOM_GyroX = createOutputText(outputRasterX * 2, outputRasterY * 1, 15, 'right');
   DOM_GyroY = createOutputText(outputRasterX * 2, outputRasterY * 2, 15, 'right');
   DOM_GyroZ = createOutputText(outputRasterX * 2, outputRasterY * 3, 15, 'right');
+  DOM_AccelX = createOutputText(outputRasterX * 4, outputRasterY * 1, 15, 'right');
+  DOM_AccelY = createOutputText(outputRasterX * 4, outputRasterY * 2, 15, 'right');
+  DOM_AccelZ = createOutputText(outputRasterX * 4, outputRasterY * 3, 15, 'right');
+
 
   DOM_LabelBatVoltage = createTextLabel(outputRasterX * 0, 5, 12, 'left', "Batt voltage");
   DOM_LabelCoilsCurrent = createTextLabel(outputRasterX * 1, 5, 13, 'left', "Coils current");
@@ -55,6 +64,8 @@ function setup() {
   DOM_LabelStatus = createTextLabel(outputRasterX * 3, 5, 12, 'left', "Status");
   DOM_LabelMag = createTextLabel(outputRasterX * 5, 5, 12, 'left', "Mag. field");
   DOM_LabelGyro = createTextLabel(outputRasterX * 2, 5, 12, 'left', "Rotation");
+  DOM_LabelAccel = createTextLabel(outputRasterX * 4, 5, 12, 'left', "Acceleration");
+
 }
 
 function draw() {
@@ -131,13 +142,18 @@ function refreshValues() {
     else if (sensorData.status == "IDLE") setOutputColor(DOM_Status, "yellow", "black");
     else setOutputColor(DOM_Status, "red", "white");
 
-    DOM_MagX.value(String('X: ' + ("    " + (sensorData.sensorMagX).toFixed(0)).slice(-5) + ' uT'));
-    DOM_MagY.value(String('Y: ' + ("    " + (sensorData.sensorMagY).toFixed(0)).slice(-5) + ' uT'));
-    DOM_MagZ.value(String('Z: ' + ("    " + (sensorData.sensorMagZ).toFixed(0)).slice(-5) + ' uT'));
+    DOM_MagX.value(String('X: ' + ("    " + (sensorData.magnetic.magX).toFixed(0)).slice(-5) + ' uT'));
+    DOM_MagY.value(String('Y: ' + ("    " + (sensorData.magnetic.magY).toFixed(0)).slice(-5) + ' uT'));
+    DOM_MagZ.value(String('Z: ' + ("    " + (sensorData.magnetic.magZ).toFixed(0)).slice(-5) + ' uT'));
 
     DOM_GyroX.value(String('X: ' + ("    " + (sensorData.omega.omega_x).toFixed(1)).slice(-6) + ' deg/s'));
     DOM_GyroY.value(String('Y: ' + ("    " + (sensorData.omega.omega_y).toFixed(1)).slice(-6) + ' deg/s'));
     DOM_GyroZ.value(String('Z: ' + ("    " + (sensorData.omega.omega_z).toFixed(1)).slice(-6) + ' deg/s'));
+
+    DOM_AccelX.value(String('X: ' + ("    " + (sensorData.accel.accelX).toFixed(1)).slice(-6) + ' m/s2'));
+    DOM_AccelY.value(String('Y: ' + ("    " + (sensorData.accel.accelY).toFixed(1)).slice(-6) + ' m/s2'));
+    DOM_AccelZ.value(String('Z: ' + ("    " + (sensorData.accel.accelZ).toFixed(1)).slice(-6) + ' m/s2'));
+
   }
 }
 

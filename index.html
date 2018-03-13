@@ -1,12 +1,30 @@
 <html>
-	<body>
-		<a href="daynight">Day Night Cycle</a></br></br>
-		<a href="orbit1">Orbital simulation 2D</a></br></br>
-		<a href="TLEparser">TLE file parser</a></br></br>
-		<a href="InputPython">Simple Python IDE</a></br></br>
-		<a href="3D_viewer">3D viewer</a></br></br>
-		<a href="ACEeditor">ACE code editor</a></br></br>
-		<a href="TelemetryBar">Telemetry Bar</a></br></br>
-		<a href="ControlPanel">Control Panel</a></br></br>
-	</body>
+
+<head>
+	<link rel="stylesheet" type="text/css" href="styles.css">
+	<script src="lib/socket.io.js"></script>
+	
+	<script>
+		var newSensorData;
+		var socket = io.connect(':8080');
+		socket.on('update-msg', function(msg) {
+			newSensorData = msg;
+			//console.log(newSensorData);
+		});
+	</script>
+</head>
+
+<body>
+	<div id="mainContainer">
+		<div id="topContainer"><iframe src="TelemetryBar" width="100%" height="100%"></iframe></div>
+		<div id="bottomContainer">
+			<div id="NW"><iframe src="plot_magnetic" width="100%" height="100%"></iframe></div>
+			<div id="NE"><iframe src="plot_omega" width="100%" height="100%"></iframe></div>
+			<div id="SW"><iframe src="3D_viewer" width="100%" height="100%"></iframe></div>
+			<div id="SE"><iframe src="plot_acceleration" width="100%" height="100%"></iframe></div>
+		</div>
+	</div>
+
+</body>
+
 </html>
